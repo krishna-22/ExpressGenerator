@@ -1,4 +1,5 @@
 var createError = require('http-errors');
+//open postamn tool and type localhost:3000/dishes  by post     body of post is one object from db.json file 
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -9,7 +10,11 @@ var usersRouter = require('./routes/users');
 var dishRouter = require('./routes/dishRouter')
 var leaderRouter = require('./routes/leaderRouter')
 var parameterRouter = require('./routes/leadersparameters')
-
+const mongoose = require('mongoose');
+const Dishes = require('./models/dishes');
+mongoose.connect('mongodb://localhost:27017/sai').then((db)=>{
+  console.log('connected correctly to server');
+},(err)=>{console.log(err)});
 var app = express();
 
 // view engine setup
